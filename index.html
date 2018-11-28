@@ -205,7 +205,7 @@
                build a smart home with focus on safety and energy consumption. 
             </br>
               If we control every light and air conditioner in a home, we will make sure no energy will be wasted 
-              just because someone forgot to turn off lights/air condioner when left home. Also, the system will
+              just because someone forgot to turn off lights/air conditioner when left home. Also, the system will
               make sure only allowed individuals will enter the house through face recognition. Whenever someone not allowed
               tries to be recognized, the system will alert the owner sending an intruder alert with a picture.
           </br>
@@ -325,9 +325,9 @@
       
       </div>
         <p>
-            The architecture of the system here proposed is shown in Figure below. 
+            The architecture of the system here proposed is shown in below. 
              As a project criteria, all data should be stored in a cloud storage.  
-             API (Application Program-ming Interface) is responsible for the data management.  
+             API (Application Programming Interface) is responsible for the data management.  
              It controls the data flow coming from and going  to the device  and  mobile app.   
              In other words, the data goes through the API to be stored in the cloud, 
              to reach the app mobile and also any info that goes to the device.
@@ -376,13 +376,13 @@
             meets all requirements regarding storage for this project. You can get more details about this platform
              <a href="https://firebase.google.com/products/realtime-database/">here</a>.
 
-            Our database is shown below. We have a room (supposed it is the house) with control, humidity, intruder, light, 
-            presence, set temperature, smoke and presence. Take a look at what each node means:
+            Our database is shown below. We have a room (home) with control, humidity, intruder, light, 
+            presence, set temperature, smoke and presence nodes. Take a look at what each node means:
 
             </br>
             </br>
             <b>Control:</b> To store if the user wants to control or not the lights. The command comes from mobile app
-            </br><b>Light:</b>  Once the user enables the control mode, he/she will be able to turn on/ooh lights using
+            </br><b>Light:</b>  Once the user enables the control mode, he/she will be able to turn on/off lights using
             the mobile app
             </br><b>Set Temperature:</b> If the air conditioner is on, the user will be able to set up
             its temperature by choosing from mobile app
@@ -393,11 +393,11 @@
 
             </br><b>Humidity:</b> Stores humidity data that comes from the device (ESP8266)
             </br><b>Temperature:</b> Stores temperature data that comes from the device (ESP8266)
-            </br><b>Smoke:</b> Stores smoke data that comes from the device (ESP8266). this data is only sent
-            to the cloud if the sensor detects fire, otherwise it will be empty (hopefully it will ever get any data)
+            </br><b>Smoke:</b> Stores smoke data that comes from the device (ESP8266). This data is only sent
+            to the cloud if the sensor detects fire, otherwise it will be empty (let's hope it never gets any data)
 
             </br><b>Presence:</b> Stores presence data that comes from the device (ESP8266). Whenever a presence is detected inside 
-            the home, the device will send to be stored in the cloud.
+            the home, the device will send to be stored in the cloud
         </p>
 
         <div class="container">
@@ -427,7 +427,7 @@
           To build the mobile app, we used <a href="http://appinventor.mit.edu/explore/">MIT App Inventor</a>. This platform is very intuitive
            and allows you to build apps for Android. It is simple to use and you can find any functionality you need to use
             online. This App inventor is a block-based tool, so basically, there is no need to code, only add any component
-            need and connect them. Below you find figures of our mobile app. It is possible to either run an emulator in any 
+            needed and connect them. Below you find figures of our mobile app. It is possible to either run an emulator in any 
             computer or on your own smartphone (Android). <a href="http://appinventor.mit.edu/explore/get-started?">Here</a> you will
              find instructions of how to get started with the app.
           
