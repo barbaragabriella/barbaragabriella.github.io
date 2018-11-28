@@ -52,7 +52,7 @@
           <li class="menu-active"><a href="#hero">Home</a></li>
           <li><a href="#about-us">About</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#screenshots">ESP Description</a></li>
+          <li><a href="#screenshots">System Architecture</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <!-- <li class="menu-has-children"><a href="">Drop Down</a>
@@ -204,11 +204,11 @@
               If we control every light and air conditioner in a home, we will make sure no energy will be wasted 
               just because someone forgot to turn off lights/air condioner when left home. Also, the system will
               make sure only allowed individuals will enter the house through face recognition. Whenever someone not allowed
-              tries to be recognized, the system will alert the owner send a intruder message with a picture.
+              tries to be recognized, the system will alert the owner sending an intruder alert with a picture.
           </br>
               To make sure the user will be able to interact with the system, we also developed a mobile app which will
                allow the user to turn on the lights before getting home or turn them off when leaving and set up a temperature
-               for the air conditioner. Also, the user will be able to monitor the presente, temperature, humidity and smoke data.
+               for the air conditioner. Also, the user will be able to monitor the presence, temperature, humidity and smoke data.
             </p>
 
             <!-- <ul class="list-unstyled">
@@ -313,29 +313,120 @@
   <!--==========================
     Screenshots Section
   ============================-->
-  <section id="screenshots" class="padd-section text-center wow fadeInUp">
+  <section id="screenshots" class="padd-section wow fadeInUp">
 
     <div class="container">
       <div class="section-title text-center">
-        <h2>App Gallery</h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+        <h2>System Architecture</h2>
+        <p class="separator"></p>
+      
       </div>
-    </div>
+        <p>
+            The architecture of the system here proposed is shown in Figure below. 
+             As a project criteria, all data should be stored in a cloud storage.  
+             API (Application Program-ming Interface) is responsible for the data management.  
+             It controls the data flow coming from and going  to the device  and  mobile app.   
+             In other words, the data goes through the API to be stored in the cloud, 
+             to reach the app mobile and also any info that goes to the device.
+        </p>
 
-    <div class="container">
-      <div class="owl-carousel owl-theme">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-2"></div>
+              <div class="col-md-6 col-lg-6">
+                <div class="feature-block">
+                  <img src="img/schem.png" alt="img">
+                  <p></p>
+                </div>
+              </div>
+          </div>
+        </div>
+        </br>
+        </br>
+        <div class="section-title text-center">
+          <h2>Heroku</h2>
+        </div>
+        <p>
+          Heroku is a cloud platform as a service that supports several programming languagues (Noje.js, Python, Java ...).
+          It lets you deploy, run and manage applications. 
+          An application is a collection of source code that instructs a build system as to which additional dependencies 
+          are needed in order to build and run the application. You can know more about how Heroku works and how to use it, 
+          <a href="https://devcenter.heroku.com/articles/how-heroku-works">here</a>.
 
-        <div><img src="img/screen/1.jpg" alt="img"></div>
-        <div><img src="img/screen/2.jpg" alt="img"></div>
-        <div><img src="img/screen/3.jpg" alt="img"></div>
-        <div><img src="img/screen/4.jpg" alt="img"></div>
-        <div><img src="img/screen/5.jpg" alt="img"></div>
-        <div><img src="img/screen/6.jpg" alt="img"></div>
-        <div><img src="img/screen/7.jpg" alt="img"></div>
-        <div><img src="img/screen/8.jpg" alt="img"></div>
-        <div><img src="img/screen/9.jpg" alt="img"></div>
+        </br>
+          Heroku was used in this application to host our API (developed using Node.js). It is responsable for controlling
+          data flow in and out the devices/mobile app. So, whenever a data had to be sent to the database (POST), or get a data from database (GET),
+          or even update an existing data (PUT) it would go through the API to the database regardless of the data source.
 
-      </div>
+        </br>
+        </br>
+          You can find the source node.js code used in this project <a href="code/app.js" download>here</a>.
+        </p>
+
+
+        <div class="section-title text-center">
+          <h2>Firebase Realtime Database</h2>
+        </div>
+        <p>
+            For cloud storage, we are using Firebase platform to store and sync data in realtime. 
+            Firebase Realtime Database is a cloud-hosted NoSQL database, it is really simple to use and 
+            meets all requirements regarding storage for this project. You can get more details about this platform
+             <a href="https://firebase.google.com/products/realtime-database/">here</a>.
+
+            Our database is shown below. We have a room (supposed it is the house) with control, humidity, intruder, light, 
+            presence, set temperature, smoke and presence. Take a look at what each node means:
+
+            </br>
+            </br>
+            <b>Control:</b> To store if the user wants to control or not the lights. The command comes from mobile app
+            </br><b>Light:</b>  Once the user enables the control mode, he/she will be able to turn on/ooh lights using
+            the mobile app
+            </br><b>Set Temperature:</b> If the air conditioner is on, the user will be able to set up
+            its temperature by choosing from mobile app
+
+            </br><b>Intruder</b>: It will store intruder data. Whenever someone that is not registered tries to be regonized,
+            the device (Raspberry Pi) will send this data to the cloud. Also, it will send an e-mail with a picture of the intruder 
+            to the user so he/she will be aware of the situation
+
+            </br><b>Humidity:</b> Stores humidity data that comes from the device (ESP8266)
+            </br><b>Temperature:</b> Stores temperature data that comes from the device (ESP8266)
+            </br><b>Smoke:</b> Stores smoke data that comes from the device (ESP8266). this data is only sent
+            to the cloud if the sensor detects fire, otherwise it will be empty (hopefully it will ever get any data)
+
+            </br><b>Presence:</b> Stores presence data that comes from the device (ESP8266). Whenever a presence is detected inside 
+            the home, the device will send to be stored in the cloud.
+        </p>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-2"></div>
+            <div class="col-md-6 col-lg-6">
+              <div class="feature-block">
+                <img src="img/database.png" alt="img">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </br>
+        <div class="section-title text-center">
+          <h2>Mobile App</h2>
+        </div>
+        <p>
+
+        </p>
+
+        <div class="container">
+            <div class="owl-carousel owl-theme">
+      
+              <div><img src="img/screen/1.png" alt="img"></div>
+              <div><img src="img/screen/2.png" alt="img"></div>
+              <div><img src="img/screen/3.png" alt="img"></div>
+              <div><img src="img/screen/4.png" alt="img"></div>
+              <div><img src="img/screen/5.png" alt="img"></div>
+      
+            </div>
+          </div>
     </div>
 
   </section>
