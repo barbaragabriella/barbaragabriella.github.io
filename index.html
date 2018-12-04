@@ -455,41 +455,122 @@
 
       <div class="container">
         <div class="section-title text-center">
-          <h2>ESP8266</h2>
+          <h2>ESP8266 Development</h2>
           <p class="separator"></p>
-        
+          
+          <h3>Hardware Components</h3>
+          <h4>Sensors</h4>
         </div>
           <p>
-              ESP description
+            Motion sensor (PIR): PIR is used to detect the motion of human inside a room.
+             The sensor uses infrared rays to map an initial pattern for reflected rays of surrounding objects. Once the calibration is done after activating the sensor, any change in the previously recognized pattern would set the digital output of the sensor accordingly (1: motion detected, 0: no motion).
+            
+          </br> Temperature and Humidity sensor (DHT22): DHT22 is digital temperature (T)
+           and humidity (RH) sensor. The sensor requires a library defined in MPU to 
+           communicate through a serial link to provide continues reading at frequency 
+           managed by the MPU.  
+
+            </br> Gas concentration sensor (MQ-2): MQ-2 is used for smoke detection. 
+            The sensor provides an analog output voltage proportional to CO and CO2 
+            concentration in ambient air. If a sensitivity threshold manually programmed 
+            by the user is exceeded, the MPU recognizes the smoke presence and sounds 
+            the fire alarm.
+            
+            <!-- Camera (Raspberry Pi v2.1 8 MP Camera Module): The Pi camera is used to achieve face recognition for people that intend to enter the house if a face is recognized the door opens. Otherwise, an Email is sent to notify the user that an intruder is standing in front of the door. -->
+          </p>
+
+          <div class="section-title text-center">
+            <h4>Actuators</h4>
+          </div>
+
+          <p>
+            Light Emitting Diodes (LEDs): LEDs are used as indicators for actuation 
+            events. In the illustrated system below, a variety of LEDs reflect 
+            different functions of the system. 
+          </br>
+          •	The yellow LED represents the lighting inside the room. 
+          At any given instant, room light is controlled by either the user 
+          app or human presence. The priority is always given to user commands 
+          which interrupt the operation of the light. Once the user drops direct control, 
+          the light follows the most updated status relevant to the motion sensor. 
+          If human presence is detected at that time the light would be active. 
+          When no human motion is detected there are two possibilities depending 
+          on a countdown that is initiated after the lack of human presence. 
+          If a delay of 30 seconds has passed the light is turned off. 
+          Otherwise, the light is set to be on until the waiting period ends.
+          </br>
+          •	The green and LEDs are temperature indicators, the red LED is active if 
+          the temperature is greater than 20oC. Otherwise, the green LED is activated. 
+          Both these LEDs operate when motion is detected or until 30 seconds have 
+          passed since last motion detection. 
+          </br>
+          •	The RGB NeoPixel resembles an air conditioning unit (AC). The AC operation 
+          temperature is represented by the color of the NeoPixel, a scale of colors 
+          between (Hot: red and Blue: cold). Temperature is set manually by the user 
+          via the mobile app at any given time. The NeoPixel is controlled like the 
+          yellow LED with an added constraint of the ambient stored temperature being 
+          greater than 20oC.
+          </br>
+          •	The red fire alarm LED remains on along with the buzzer if smoke is detected.
+        </br>
+        Buzzer: The buzzer is used as a fire alarm activated in 
+        case of smoke detection. The alarm is turned off either manually 
+        or automatically when no more is detected in the premises.
           </p>
   
-          <!-- <div class="container">
+          <div class="section-title text-center">
+            <h4>Wiring</h4>
+          </div>
+
+          <p>
+              Figure and table below illustrate the wiring of SSH. DHT22, 
+              buzzer, 4 leds and a NeoPixel are connected to the GPIO pins of 
+              NodeMCU. MQ-2 sensor is connected to A0 pin of NodeMCU. 
+          </p>
+          <div class="container">
             <div class="row">
-              <div class="col-md-6 col-lg-2"></div>
+              <div class="col-md-6 col-lg-1"></div>
                 <div class="col-md-6 col-lg-6">
                   <div class="feature-block">
-                    <img src="img/schem.png" alt="img">
+                    <img src="img/wiring.png" alt="img">
                     <p></p>
                   </div>
                 </div>
             </div>
           </div>
           </br>
-          </br> -->
+          </br>
           
+          <div class="section-title text-center">
+              <h4>Communication with Database</h4>
+            </div>
+          <p>There are several key features that need to be taken into consideration when establishing connections for 
+            communication purposes and accumulating sensory measurements. Data processing and storage space, transmission 
+            power time minimization and network congestion mitigation. These features were sought out to be met through the 
+            investigation of adequate intervals to achieve enhanced performance for sending sensory data and receiving user 
+            commands. The investigation is based on the function and operation of each type of sensors. Sensors responsible 
+            for detection events like motion and smoke sensors measure the premises all the time but only record their findings 
+            once a status change occurs. Otherwise, the database would be flooded with redundant detection data. For pressure and 
+            humidity sensor, a record of ambient conditions is sent once every 15 minutes. A resolution that is found convenient to 
+            keep control over the environment. In the same reasoning, user control preferences are updated all the time to achieve 
+            real-time operation schemes.  
+          </p>
+          <p>
+            Below you find a flowchart of our system. It shows every step from when the ESP8266 is turned on to every decision made. 
+            You can download our ESP8266 code <a href="code/espCode.ino">here</a>. We developed it using the Arduino IDE. 
+          </p>
   
-          <!-- <div class="container">
+          <div class="container">
             <div class="row">
               <div class="col-md-6 col-lg-2"></div>
               <div class="col-md-6 col-lg-6">
                 <div class="feature-block">
-                  <img src="img/database.png" alt="img">
+                  <img src="img/flowchart.png" alt="img">
                   <p></p>
                 </div>
               </div>
             </div>
           </div>
-          </br> -->
       </div>
   
     </section>
