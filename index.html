@@ -629,7 +629,7 @@
              To start, we need some pictures to train the recognizer. Around 12 pictures would be a good start.
             </br>
 
-             Once you have your dataset, you train yuor recognizer. <a href="">Here</a> you can find our folder with a dataset which you
+             Once you have your dataset, you train yuor recognizer. <a href="https://github.com/barbaragabriella/barbaragabriella.github.io/tree/master/code/RaspberryPi">Here</a> you can find our folder with a dataset which you
               have to fill with your pics, the detectors, trainer and main code. You will find the complete code there and you can try 
               yourself only adding your own info, email and API url. 
 
@@ -638,10 +638,23 @@
           The trainer will train your recognizer you only need to execute (<i>python trainer.py</i>) after putting your pics in the dataset. If you want to
            recognize more than one person, just add more folders following the sequence number.
         </br>
-        Once you trainer is done, you will get a file named <i>trainedData.yml</i>, it will allow your main code to 
+        Once the trainer is done, you will get a file named <i>trainedData.yml</i>. It will allow your main code to 
         access your recognizer so you do not need to train everytime you run your main code.
-
           </p>
+
+        <p>
+
+          Going through the main code you will see there are some libraries (OpenCv, time, numpy, picamera and others). 
+          Below there is a function responsable for sending the email to the owner. So whenever an intruder is detected, 
+          the owner will receive an e-mail with a pic only once, because we want to make sure your mailbox will not
+          receive yons of e-mails. Also, we send the data to our cloud storage.
+
+        </br>
+        After the e-mail function, we load our detector and then the real code starts. The main code is well comented 
+        so you will find all information you need to understand it. Whenever we detect someone, a square is drawn around the face
+         with either the recognized face's name or an intruder tag. If you are in the dataset, an "Access Granted" will be displayed
+          after a while. Otherwise, it will display an "Intruder" message and send the e-email. 
+        </p>
   
           <!-- <div class="container">
             <div class="row">

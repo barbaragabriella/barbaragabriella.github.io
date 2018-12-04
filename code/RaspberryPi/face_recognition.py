@@ -15,7 +15,7 @@ from email.MIMEText import MIMEText
 from email.mime.image import MIMEImage
 
 
-# In[2]:
+# send email funtion
 def SendEmailIntruso():
     fromaddr = "email which will send the message"
     toaddr = "email that will receive the message"
@@ -41,12 +41,12 @@ def SendEmailIntruso():
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()
+
 #there is no label 0 in our training data so subject name for index/label 0 is empty
 
 subjects = ["", "owners name"]
 
     
-#Carrega o detector facial do OpenCv, neste caso, LBP
 #load OpenCV face detector, I am using LBP which is fast
 #there is also a more accurate but slow Haar classifier
 # cascPath = "detectors/haarcascade_frontalface_default.xml"
