@@ -442,7 +442,6 @@
               <div><img src="img/screen/4.png" alt="img"></div>
               <div><img src="img/screen/5.png" alt="img"></div>
               <div><img src="img/screen/6.png" alt="img"></div>
-              <div><img src="img/screen/7.png" alt="img"></div>
       
             </div>
           </div>
@@ -589,7 +588,59 @@
         
         </div>
           <p>
-              Raspberry Pi description
+              We already know how to control lights and air conditioner and how to monitor smoke data. Now we will go through
+               the safety part. We are trying to control the entrance by only open de door/gate when someone from the house
+                is trying to get in. In other words, we are trying to recognize authorized individuals. To do that, we will be
+                 doing a face recognition that thanks to <a href="https://opencv.org">OpenCv</a> it is easier than it sounds.
+          </br>
+                 There are basically 4 steps to do a face recognition:
+            
+          </br>
+          •	Gather data: Gather images of the person (face only) that you want to recognize
+          </br> 
+          •	Train recognizer: Teach the recognizer with the photos you have chosen so it can learn who to recognize
+          </br> 
+          •	Recognition: Show some new faces to the recognizer to see if it is working the way it should
+          </br> 
+          •	Use your data: Now you do your logic with the faces recognized.
+          </br> 
+          </p>
+
+          <p>
+              OpenCV has three built in face recognizers and you only need one code line to use them. In this project,
+              we are using Local Binary Patterns Histograms (LBPH) Face Recognizer which goes but this 
+              calling: <i>cv2.face.createLBPHFaceRecognizer()</i>. 
+
+          </br>
+
+              Eigenfaces and Fisherfaces are the other two face recognizers available on OpenCv but they are both 
+              affected by light and in real life we cannot guarantee perfect light conditions. 
+              LBPH face recognizer is an improvement to overcome this drawback.
+              The idea behind LBPH is to not look at the image as a whole instead find the local features of an image. 
+              LBPH alogrithm try to find the local structure of an image and it does that by comparing each pixel with 
+              its neighboring pixels. You can find more about this method  <a href="https://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html#local-binary-patterns-histograms"> here</a>.
+
+          </p>
+          <p>
+            Because we will constantly monitoring the entrance, we will be using a Raspberry Pi Camera along with
+             the Raspberry Pi. This part was developed using Python, best programming language to work with specially 
+             when dealing with image processing. 
+          </br>
+             To start, we need some pictures to train the recognizer. Around 12 pictures would be a good start.
+            </br>
+
+             Once you have your dataset, you train yuor recognizer. <a href="">Here</a> you can find our folder with a dataset which you
+              have to fill with your pics, the detectors, trainer and main code. You will find the complete code there and you can try 
+              yourself only adding your own info, email and API url. 
+
+          </br>
+
+          The trainer will train your recognizer you only need to execute (<i>python trainer.py</i>) after putting your pics in the dataset. If you want to
+           recognize more than one person, just add more folders following the sequence number.
+        </br>
+        Once you trainer is done, you will get a file named <i>trainedData.yml</i>, it will allow your main code to 
+        access your recognizer so you do not need to train everytime you run your main code.
+
           </p>
   
           <!-- <div class="container">
