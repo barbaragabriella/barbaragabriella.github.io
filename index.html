@@ -106,7 +106,7 @@
         <p></p>
         <p></p>
         <h1>Welcome to SSHome</h1>
-        <h2>A Smart and Safe Home project developed by master's students of Heriot-Watt University.
+        <h2>A Smart and Safe Home project developed by master's students of Heriot-Watt University for Internet of Things course.
           <p></p>
           Here you will learn step by step of all material, hardware, software, and programming languages used to develop this project.
          <br/>
@@ -555,7 +555,40 @@
             humidity sensor, a record of ambient conditions is sent once every 15 minutes. A resolution that is found convenient to 
             keep control over the environment. In the same reasoning, user control preferences are updated all the time to achieve 
             real-time operation schemes.  
+          </br>
+          Sending and receiving data is managed using JSON syntax structured commands. A connection is established each 
+          time a detection and/ or a change of status is confirmed for a sensor – in the case of the motion and smoke 
+          sensors, or it is time already to send data - in case of temperature and humidity sensors. A JSON message is 
+          initiated by creating a unique JSON buffer object with a nested value object. Upon writing the message with 
+          the specified syntax, the message is sent using http “post” command with a specified header and path. 
           </p>
+          <div class="container">
+              <div class="row">
+                <div class="col-md-6 col-lg-3"></div>
+                <div class="col-md-6 col-lg-6">
+                  <div class="feature-block">
+                    <img src="img/json.png" alt="img">
+                    <p></p>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <p>
+              To read control values in real time from database. A special database library “get” command from Firebase 
+              is used with specific path and type for each value needed to be received.
+          </p>
+          <div class="container">
+              <div class="row">
+                <div class="col-md-6 col-lg-3"></div>
+                <div class="col-md-6 col-lg-6">
+                  <div class="feature-block">
+                    <img src="img/fire.png" alt="img">
+                    <p></p>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <p>
           <p>
             Below you find a flowchart of our system. It shows every step from when the ESP8266 is turned on to every decision made. 
             You can download our ESP8266 code <a href="code/espCode.ino">here</a>. We developed it using the Arduino IDE. 
@@ -622,14 +655,14 @@
 
           </p>
           <p>
-            Because we will constantly monitoring the entrance, we will be using a Raspberry Pi Camera along with
+            Because we will be constantly monitoring the entrance, we will be using a Raspberry Pi Camera along with
              the Raspberry Pi. This part was developed using Python, best programming language to work with specially 
              when dealing with image processing. 
           </br>
              To start, we need some pictures to train the recognizer. Around 12 pictures would be a good start.
             </br>
 
-             Once you have your dataset, you train yuor recognizer. <a href="https://github.com/barbaragabriella/barbaragabriella.github.io/tree/master/code/RaspberryPi">Here</a> you can find our folder with a dataset which you
+             Once you have your dataset, you train your recognizer. <a href="https://github.com/barbaragabriella/barbaragabriella.github.io/tree/master/code/RaspberryPi">Here</a> you can find our folder with a dataset which you
               have to fill with your pics, the detectors, trainer and main code. You will find the complete code there and you can try 
               yourself only adding your own info, email and API url. 
 
@@ -647,7 +680,7 @@
           Going through the main code you will see there are some libraries (OpenCv, time, numpy, picamera and others). 
           Below there is a function responsable for sending the email to the owner. So whenever an intruder is detected, 
           the owner will receive an e-mail with a pic only once, because we want to make sure your mailbox will not
-          receive yons of e-mails. Also, we send the data to our cloud storage.
+          receive tons of e-mails. Also, we send the data to our cloud storage.
 
         </br>
         After the e-mail function, we load our detector and then the real code starts. The main code is well comented 
@@ -679,10 +712,14 @@
   <section id="video" class="text-center wow fadeInUp">
     <div class="overlay">
       <div class="container-fluid container-full">
-
-        <div class="row">
-          <a href="#" class="js-modal-btn play-btn" data-video-id="s22ViV7tBKE"></a>
-        </div>
+        <p></p>
+        <!-- <div class="row"> -->
+          <!-- <a href="img/My Movie.mp4" > -->
+              <video width="800" controls>
+                  <source src="img/moviee.mp4" type="video/mp4">
+                </video>
+          <!-- </a> -->
+        <!-- </div> -->
 
       </div>
     </div>
@@ -697,7 +734,7 @@
       <div class="section-title text-center">
 
         <h2>Team Member</h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+        <!-- <p class="separator">Integer cursus bibendum augue ac cursus .</p> -->
 
       </div>
     </div>
@@ -705,22 +742,21 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-md-6 col-md-4 col-lg-3">
+        <div class="col-md-6 col-md-4 col-lg-4">
           <div class="team-block bottom">
-            <img src="img/team/1.jpg" class="img-responsive" alt="img">
+            <img src="img/team/ahmad.jpg" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
+              <!-- <ul class="list-unstyled">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              </ul> -->
+              <h4>Ahmad</h4>
             </div>
           </div>
         </div>
 
-       <div class="col-md-6 col-md-4 col-lg-3">
+       <!-- <div class="col-md-6 col-md-4 col-lg-3">
           <div class="team-block bottom">
             <img src="img/team/2.jpg" class="img-responsive" alt="img">
             <div class="team-content">
@@ -733,34 +769,34 @@
               <h4>Kimberly Tran</h4>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="col-md-6 col-md-4 col-lg-3">
+        <div class="col-md-6 col-md-4 col-lg-4">
           <div class="team-block bottom">
-            <img src="img/team/3.jpg" class="img-responsive" alt="img">
+            <img src="img/team/barbara.jpg" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
+              <!-- <ul class="list-unstyled">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              </ul> -->
+              <!-- <span>manager</span> -->
+              <h4>Bárbara Soares</h4>
             </div>
           </div>
         </div>
 
-        <div class="col-md-6 col-md-4 col-lg-3">
+        <div class="col-md-6 col-md-4 col-lg-4">
           <div class="team-block bottom">
-            <img src="img/team/4.jpg" class="img-responsive" alt="img">
+            <img src="img/team/xiang.jpeg" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
+              <!-- <ul class="list-unstyled">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              </ul> -->
+              <!-- <span>manager</span> -->
+              <h4>Li Xiang</h4>
             </div>
           </div>
         </div>
@@ -774,7 +810,7 @@
     Testimonials Section
   ============================-->
 
-  <section id="testimonials" class="padd-section text-center wow fadeInUp">
+  <!-- <section id="testimonials" class="padd-section text-center wow fadeInUp">
     <div class="container">
       <div class="row justify-content-center">
 
@@ -836,7 +872,7 @@
 
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!--==========================
     Pricing Table Section
