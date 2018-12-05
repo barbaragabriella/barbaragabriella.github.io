@@ -441,7 +441,7 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-lg-2"></div>
+            <div class="col-md-6 col-lg-3"></div>
               <div class="col-md-6 col-lg-6">
                 <div class="feature-block">
                   <img src="img/screen/exp.png" alt="img">
@@ -681,12 +681,12 @@
             </br>
 
              Once you have your dataset, you train your recognizer. <a href="https://github.com/barbaragabriella/barbaragabriella.github.io/tree/master/code/RaspberryPi">Here</a> you can find our folder with a dataset which you
-              have to fill with your pics, the detectors, trainer and main code. You will find the complete code there and you can try 
+              have to fill with your pics, the detectors, trainer and main code (<i>face_recognition.py</i>). You will find the complete code there and you can try 
               yourself only adding your own info, email and API url. 
 
           </br>
 
-          The trainer will train your recognizer you only need to execute (<i>python trainer.py</i>) after putting your pics in the dataset. If you want to
+          The trainer will train your recognizer. You only need to execute (<i>python trainer.py</i>) after putting your pics in the dataset. If you want to
            recognize more than one person, just add more folders following the sequence number.
         </br>
         Once the trainer is done, you will get a file named <i>trainedData.yml</i>. It will allow your main code to 
@@ -695,8 +695,10 @@
 
         <p>
 
-          Going through the main code you will see there are some libraries (OpenCv, time, numpy, picamera and others). 
-          Below there is a function responsable for sending the email to the owner. So whenever an intruder is detected, 
+          Going through the main code you will see there are some libraries (OpenCv, time, numpy, picamera and others). Most 
+          of these library can be installed used the command <i>pip install library-name</i>. For example, to install numpy, you can 
+          run <i>pip install numpy</i>. To install OpenCv, this command should be executed on command line <i>sudo apt-get install python-opencv</i>.
+          Below the libraries on the main code, there is a function responsable for sending the email to the owner. So whenever an intruder is detected, 
           the owner will receive an e-mail with a pic only once, because we want to make sure your mailbox will not
           receive tons of e-mails. Also, we send the data to our cloud storage.
 
@@ -706,18 +708,38 @@
          with either the recognized face's name or an intruder tag. If you are in the dataset, an "Access Granted" will be displayed
           after a while. Otherwise, it will display an "Intruder" message and send the e-email. 
         </p>
-  
-          <!-- <div class="container">
-            <div class="row">
-              <div class="col-md-6 col-lg-2"></div>
-                <div class="col-md-6 col-lg-6">
-                  <div class="feature-block">
-                    <img src="img/schem.png" alt="img">
-                    <p></p>
-                  </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-1"></div>
+              <div class="col-md-6 col-lg-6">
+                <div class="feature-block">
+                  <img src="img/detection.png" alt="img">
+                  <p></p>
                 </div>
-            </div>
-          </div> -->
+              </div>
+          </div>
+        </div>
+      </br>
+      </br>
+        <div class="section-title text-center">
+          <h3>Limitations</h3>
+        </div>
+
+        <p>
+          One of the big limitations most projects regarding image processing have faced so far is to know exactly if 
+          the image is real. For example, in this project we are trying to recognize faces but there could be a real face, 
+          a picute in a mobile phone or even a printed one. In all of those cases, if the resolution is good enough, the program 
+          would recognize a face and tell if it is someone known or unknown. This issue decreases the safety method once someone 
+          can just show a picture and get inside of the house.
+        </br>
+        We did not go that far to try to solve this issue. However, there might br some option to increase the efficiency such as 
+        using machine learning. In this case, it would be possible to first detect if there was a real person in the image and then 
+        recognize the face. Another possibility could be detect what is around the face, if there are phone's edge, paper's edge and 
+        an infinity of possibilities that might arise.
+        </p>
+  
+          
           
       </div>
   
